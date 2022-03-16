@@ -17,14 +17,17 @@ class Produit
     private $nom;
 
     #[ORM\Column(type: 'text')]
-    private $descr;
+    private $description;
 
     #[ORM\Column(type: 'float')]
     private $prix;
 
-    #[ORM\OneToOne(targetEntity: Categorie::class, cascade: ['persist', 'remove'])]
+    #[ORM\ManyToOne(targetEntity: Categorie::class, inversedBy: 'produits')]
     #[ORM\JoinColumn(nullable: false)]
     private $categorie;
+
+    #[ORM\Column(type: 'boolean')]
+    private $hasDescription;
 
     public function getId(): ?int
     {
@@ -43,14 +46,14 @@ class Produit
         return $this;
     }
 
-    public function getDescr(): ?string
+    public function getDescription(): ?string
     {
-        return $this->descr;
+        return $this->description;
     }
 
-    public function setDescr(string $descr): self
+    public function setDescription(string $description): self
     {
-        $this->descr = $descr;
+        $this->description = $description;
 
         return $this;
     }
@@ -72,9 +75,21 @@ class Produit
         return $this->categorie;
     }
 
-    public function setCategorie(Categorie $categorie): self
+    public function setCategorie(?Categorie $categorie): self
     {
         $this->categorie = $categorie;
+
+        return $this;
+    }
+
+    public function getHasDescription(): ?bool
+    {
+        return $this->hasDescription;
+    }
+
+    public function setHasDescription(bool $hasDescription): self
+    {
+        $this->hasDescription = $hasDescription;
 
         return $this;
     }

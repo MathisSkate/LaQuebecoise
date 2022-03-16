@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Notre menu{% endblock %}
+
+{% block body %}
+    <h1 class="text-center">Notre menu</h1>
+    {% for categorie in categories %}
+        {% if categorie.produits | length != 0 %}
+            <div class="categorie container">
+                <h2 class="nom">{{ categorie.nom }}</h2>
+                {% for produit in categorie.produits %}
+                    <div class="produit border row">
+                        <h3 class="nomp col">{{ produit.nom }}  {{ produit.prix }} €</h3>
+                        <a class="col-1" href="{{ path('app_produit_edit', {'id': produit.id}) }}">edit</a>
+                        {% if produit.hasDescription %}
+                            <h4 class="descriptionp">{{ produit.description }}</h4>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+            <br/>
+        {% endif %}
+    {% else %}
+        <div hidden></div>
+    {% endfor %}
+{% endblock %}
