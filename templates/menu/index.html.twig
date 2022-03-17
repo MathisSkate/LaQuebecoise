@@ -3,24 +3,116 @@
 {% block title %}Notre menu{% endblock %}
 
 {% block body %}
-    <h1 class="text-center">Notre menu</h1>
-    {% for categorie in categories %}
-        {% if categorie.produits | length != 0 %}
-            <div class="categorie container">
-                <h2 class="nom">{{ categorie.nom }}</h2>
-                {% for produit in categorie.produits %}
-                    <div class="produit border row">
-                        <h3 class="nomp col">{{ produit.nom }}  {{ produit.prix }} €</h3>
-                        <a class="col-1" href="{{ path('app_produit_edit', {'id': produit.id}) }}">edit</a>
-                        {% if produit.hasDescription %}
-                            <h4 class="descriptionp">{{ produit.description }}</h4>
+    <h1 class="text-center"><u><strong>Notre menu</strong></u></h1>
+    <br/>
+    <div class="menu">
+        <div class="container">
+            <div class="plats container">
+                <h2 id="plats" class="nom">ici commence ton aventure</h2>
+                <br/>
+                {% for plat in plats %}
+                    <div class="produit">
+                        <h3 class="nomp"><u>{{ plat.nom }}</u> {{ plat.prix }} €</h3>
+                        <br/>
+                        {% if plat.hasDescription %}
+                            <h4 class="descriptionp">{{ plat.description }}</h4>
+                        {% endif %}
+                    </div>
+                    <br/>
+                {% endfor %}
+            </div>
+            <div class="viande">
+                <h4><u>Les viandes aux choix :</u></h4>
+                <br/>
+                <h5>bacon, saucisses, hache de boeuf frias, effiloché de canard</h5>
+            </div>
+            <br/>
+            <div class="normands container">
+                <h2 id="normands" class="nom">l'aventure normande</h2>
+                <br/>
+                {% for normand in normands %}
+                    <div class="produit">
+                        <h3 class="nomp"><u>{{ normand.nom }}</u> {{ normand.prix }} €</h3>
+                        <br/>
+                        {% if normand.hasDescription %}
+                            <h4 class="descriptionp">{{ normand.description }}</h4>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="container">
+            <div class="frites container">
+                <br/>
+                <br/>
+                <br/>
+                <h2 id="frites" class="nom">petite aventure</h2>
+                <img class="boussole" src="{{ asset('images/boussole.png') }}"/>
+                <br/>
+                <br/>
+                <br/>
+                {% for frite in frites %}
+                    <div class="produit">
+                        <h3 class="nomp">{{ frite.nom }}  {{ frite.prix }} €</h3>
+                        {% if frite.hasDescription %}
+                            <h4 class="descriptionp">{{ frite.description }}</h4>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="container">
+            <div class="autres container">
+                <h2 id="autres" class="nom"><u>un petit road trip ???</u></h2>
+                <br/>
+                {% for autre in autres %}
+                    <div class="produit">
+                        <h3 class="nomp">{{ autre.nom }}  {{ autre.prix }} €</h3>
+                        <br/>
+                        {% if autre.hasDescription %}
+                            <h4 class="descriptionp">{{ autre.description }}</h4>
                         {% endif %}
                     </div>
                 {% endfor %}
             </div>
             <br/>
-        {% endif %}
-    {% else %}
-        <div hidden></div>
-    {% endfor %}
+            <div class="desserts container">
+                <h2 id="desserts" class="nom"><u>fin de l'aventure</u></h2>
+                <br/>
+                {% for dessert in desserts %}
+                    <div class="produit">
+                        <h3 class="nomp">{{ dessert.nom }}  {{ dessert.prix }} €</h3>
+                        <br/>
+                        {% if dessert.hasDescription %}
+                            <h4 class="descriptionp">{{ dessert.description }}</h4>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+            <br/>
+            <div class="boissons container">
+                <h2 id="boissons" class="nom"><u>les breuvages !!!</u></h2>
+                <br/>
+                {% for boisson in boissons %}
+                    <div class="produit">
+                        <h3 class="nomp ">{{ boisson.nom }}  {{ boisson.prix }} €</h3>
+                        <br/>
+                        {% if boisson.hasDescription %}
+                            <h4 class="descriptionp">{{ boisson.description }}</h4>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <h3 id="voyage">Bon voyage !</h3>
+    <div class="pied">
+        <img class="logo w-25" src="{{ asset('images/logo.jpg') }}" alt="logo"/>
+        <img class="frites w-25" src="{{ asset('images/poutine.png') }}" alt="frite"/>
+        <div class="coordonnes">
+            <h4>quebecfrance@gmail.com</h4>
+            <h4>0783320224</h4>
+        </div>
+        <h4 class="alcool">* l'abus d'alcool est dangereux pour la santé, à consommer avec modération</h4>
+    </div>
 {% endblock %}

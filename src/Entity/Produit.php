@@ -16,18 +16,17 @@ class Produit
     #[ORM\Column(type: 'string', length: 255)]
     private $nom;
 
-    #[ORM\Column(type: 'text')]
+    #[ORM\Column(type: 'text', nullable: true)]
     private $description;
+
+    #[ORM\Column(type: 'boolean')]
+    private $hasDescription;
 
     #[ORM\Column(type: 'float')]
     private $prix;
 
-    #[ORM\ManyToOne(targetEntity: Categorie::class, inversedBy: 'produits')]
-    #[ORM\JoinColumn(nullable: false)]
-    private $categorie;
-
-    #[ORM\Column(type: 'boolean')]
-    private $hasDescription;
+    #[ORM\Column(type: 'string', length: 255)]
+    private $type;
 
     public function getId(): ?int
     {
@@ -51,9 +50,21 @@ class Produit
         return $this->description;
     }
 
-    public function setDescription(string $description): self
+    public function setDescription(?string $description): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    public function getHasDescription(): ?bool
+    {
+        return $this->hasDescription;
+    }
+
+    public function setHasDescription(bool $hasDescription): self
+    {
+        $this->hasDescription = $hasDescription;
 
         return $this;
     }
@@ -70,26 +81,14 @@ class Produit
         return $this;
     }
 
-    public function getCategorie(): ?Categorie
+    public function getType(): ?string
     {
-        return $this->categorie;
+        return $this->type;
     }
 
-    public function setCategorie(?Categorie $categorie): self
+    public function setType(string $type): self
     {
-        $this->categorie = $categorie;
-
-        return $this;
-    }
-
-    public function getHasDescription(): ?bool
-    {
-        return $this->hasDescription;
-    }
-
-    public function setHasDescription(bool $hasDescription): self
-    {
-        $this->hasDescription = $hasDescription;
+        $this->type = $type;
 
         return $this;
     }
