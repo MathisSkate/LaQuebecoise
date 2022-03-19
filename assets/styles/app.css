@@ -1,10 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
 
+html {
+    font-size: 12px;
+}
+
 body {
     text-transform: uppercase;
     font-family: 'Permanent Marker', cursive;
+}
+
+.navbar {
     background-color: #a774fc;
-    font-size: small;
+    font-size: 20px;
 }
 
 .carousel {
@@ -16,22 +23,45 @@ body {
 .menu {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 10px;
     text-align: center;
+    font-size: 15px;
 }
 
 .pied {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-gap: 10px;
     text-align: center;
 }
 
-.frites {
+.imgfrite {
     margin: auto;
     text-align: center;
 }
 
 .logo {
     margin-left: 20em;
+}
+
+.titre {
+    color: orchid;
+    text-decoration: underline;
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.plats, .normands, .autres {
+    color: orangered;
+}
+
+.desserts, .frites {
+    color: maroon;
+}
+
+.boissons, .alcool {
+    color: royalblue;
+}
+
+.description {
+    color: orange;
+    font-style: italic;
 }
