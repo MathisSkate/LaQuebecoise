@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}FoodTruck, La Quebecoise!{% endblock %}
+{% block body %}
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+          integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+          crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+            integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+            crossorigin=""></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        window.onload = function () {
+            initMap();
+        };
+        var lat = 49.09635;
+        var lon = 1.4471494459459464;
+        var carte = null;
+        function initMap() {
+            carte = L.map("map").setView([lat, lon], 15);
+            L.tileLayer("https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png", {
+                attribution: 'données OpenStreetMap',
+                minZoom: 1,
+                maxZoom: 20
+            }).addTo(carte);
+            addMarker();
+            createMarker();
+        }
+
+        function addMarker() {
+            var marker = L.marker([lat, lon]).addTo(carte);
+            marker.bindPopup("Mairie de Saint Marcel");
+        }
+
+        function createMarker() {
+            {% for location in locations %}
+                $.ajax({
+                    url: 'https://nominatim.openstreetmap.org/search?format=json&street={{ location.rue }}&city={{ location.ville }}&country={{ location.pays }}&postalcode={{ location.codepostal }}&limit=1',
+                    method: "GET",
+                    dataType: "json",
+                    success: function (data) {
+                        console.log(data);
+                        var marker = L.marker([data[0].lat, data[0].lon]).addTo(carte);
+                        marker.bindPopup("Chez {{ location.nom }} <br/> {{ location.description }}");
+                    }
+                });
+            {% endfor %}
+        }
+
+    </script>
+    <style>
+        html, body, #map {
+            height: 96%;
+            margin: 0px;
+            padding: 0px;
+        }
+    </style>
+    {% block map %}
+        <div id="map">
+        </div>
+    {% endblock %}
+{% endblock %}

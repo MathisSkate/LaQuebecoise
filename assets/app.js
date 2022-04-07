@@ -16,6 +16,10 @@ import "bootstrap/dist/js/bootstrap.bundle.js";
 
 import $ from 'jquery';
 
+/*----------*/
+/*   Menu   */
+/*----------*/
+
 import CircleType from 'circletype';
 
 circle();
