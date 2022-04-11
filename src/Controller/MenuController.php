@@ -26,6 +26,14 @@ class MenuController extends AbstractController
         ]);
     }
 
+    #[Route('/list', name: 'app_menu_list', methods: ['GET'])]
+    public function list(ProduitRepository $produitRepository): Response
+    {
+        return $this->render('menu/list.html.twig', [
+            'produits' => $produitRepository->findAll(),
+        ]);
+    }
+
     #[Route('/new', name: 'app_menu_new', methods: ['GET', 'POST'])]
     public function new(Request $request, ProduitRepository $produitRepository): Response
     {
@@ -41,14 +49,6 @@ class MenuController extends AbstractController
         return $this->renderForm('menu/new.html.twig', [
             'produit' => $produit,
             'form' => $form,
-        ]);
-    }
-
-    #[Route('/{id}', name: 'app_menu_show', methods: ['GET'])]
-    public function show(Produit $produit): Response
-    {
-        return $this->render('menu/show.html.twig', [
-            'produit' => $produit,
         ]);
     }
 

@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container text-center align-content-center">
+        <h1>Liste des Produits</h1>
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Prix</th>
+                <th>Type</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for produit in produits %}
+                <tr>
+                    <td>{{ produit.id }}</td>
+                    <td>{{ produit.nom }}</td>
+                    <td>{{ produit.prix }}</td>
+                    <td>{{ produit.type }}</td>
+                    <td><a href="{{ path('app_menu_edit', {'id': produit.id}) }}">Modifier</a></td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="5">Aucun Produit trouvé</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <a href="{{ path('app_menu_new') }}">Créer un nouveau Produit</a>
+    </div>
+{% endblock %}

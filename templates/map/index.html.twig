@@ -1,6 +1,5 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}FoodTruck, La Quebecoise!{% endblock %}
 {% block body %}
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
           integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
@@ -41,7 +40,7 @@
                     success: function (data) {
                         console.log(data);
                         var marker = L.marker([data[0].lat, data[0].lon]).addTo(carte);
-                        marker.bindPopup("Chez {{ location.nom }} <br/> {{ location.description }}");
+                        marker.bindPopup("<center>{{ location.nom }} <br/><br/> {{ location.description }}</center>");
                     }
                 });
             {% endfor %}

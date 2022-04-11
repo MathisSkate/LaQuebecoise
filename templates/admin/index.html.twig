@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="wrapper">
+    <h1 id="titre" class="text-center">FoodTruck, La Québecoise</h1>
+    {% if app.user %}
+    <div class="mb-3 text-center">
+        Tu es connecté en tant que {{ app.user.username }}, <a href="{{ path('app_logout') }}">Se déconnecter</a>
+    </div>
+    {% endif %}
+    <div class="container">
+        <div>
+            <h2>Gestion des Produits</h2>
+            <a href="{{ path('app_menu_list') }}">Produits</a>
+        </div>
+        <div>
+            <h2>Gestion des Locations</h2>
+            <a href="{{ path('app_location_index') }}">Locations</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
