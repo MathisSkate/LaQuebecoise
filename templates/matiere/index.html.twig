@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+{% set total = 0 %}
+{% block body %}
+    <div class="container align-content-center text-center">
+        <h1>Liste des Matières Premières</h1>
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Prix</th>
+                <th>Stock</th>
+                <th>Quantité</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for matiere in matieres %}
+                <tr>
+                    <td>{{ matiere.nom }}</td>
+                    {% if matiere.isUnite %}
+                        <td>{{ matiere.prix }} €/unite</td>
+                        <td>{{ matiere.stock }}</td>
+                        {% set quantite = matiere.stock * matiere.prix %}
+                    {% else %}
+                        <td>{{ matiere.prix }} €/kg</td>
+                        <td>{{ matiere.stock }} g</td>
+                        {% set quantite = (matiere.stock / 1000) * matiere.prix %}
+                    {% endif %}
+                    {% set total = total + quantite %}
+                    <td>{{ quantite }} €</td>
+                    <td>
+                        <a href="{{ path('app_matiere_edit', {'id': matiere.id}) }}">Modifier</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="5">Aucune Matière Première trouvée</td>
+                </tr>
+            {% endfor %}
+            <tr class="border bg-danger">
+                <td>Total</td>
+                <td colspan="2"></td>
+                <td>{{ total }} €</td>
+                <td></td>
+            </tr>
+            </tbody>
+        </table>
+        <a href="{{ path('app_matiere_new') }}">Créer une nouvelle Matière Première</a>
+    </div>
+{% endblock %}

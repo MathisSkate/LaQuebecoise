@@ -2,11 +2,11 @@
 
 namespace App\Entity;
 
-use App\Repository\LocationRepository;
+use App\Repository\LocalisationRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: LocationRepository::class)]
-class Location
+#[ORM\Entity(repositoryClass: LocalisationRepository::class)]
+class Localisation
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]

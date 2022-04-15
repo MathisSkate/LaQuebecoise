@@ -13,10 +13,10 @@ class ProduitType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('nom')
-            ->add('description')
-            ->add('hasDescription')
-            ->add('prix')
+            ->add('nom', null, ['label' => false, 'attr' => ['placeholder' => 'Nom']])
+            ->add('description', null, ['label' => false, 'attr' => ['placeholder' => 'Description']])
+            ->add('hasDescription', null, ['label' => 'à une description ?'])
+            ->add('prix', null, ['label' => false, 'attr' => ['placeholder' => 'Prix']])
             ->add(
                 'type',
                 ChoiceType::class,

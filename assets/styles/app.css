@@ -9,10 +9,13 @@ body {
     font-family: 'Permanent Marker', cursive;
 }
 
-.navbar {
-    background-color: #a774fc;
-    font-size: 20px;
+.body {
+    margin-top: 10px;
 }
+
+/*-----------------*/
+/*  Index          */
+/*-----------------*/
 
 .carousel {
     margin: 1em auto;
@@ -20,7 +23,11 @@ body {
     width: 95%;
 }
 
-.menu {
+/*-----------------*/
+/*  Carte          */
+/*-----------------*/
+
+.carte {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     text-align: center;
@@ -64,4 +71,122 @@ body {
 .description {
     color: orange;
     font-style: italic;
+}
+
+/*-----------------*/
+/*  Navbar         */
+/*-----------------*/
+
+.nav {
+    mask-image: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, #ffffff 25%, #ffffff 75%, rgba(255, 255, 255, 0) 100%);
+    padding: 30px 0;
+    background-color: deepskyblue;
+}
+
+.nav ul {
+    text-align: center;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.2) 25%, rgba(255, 255, 255, 0.2) 75%, rgba(255, 255, 255, 0) 100%);
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.1), inset 0 0 1px rgba(255, 255, 255, 0.6);
+}
+
+.nav ul li {
+    display: inline-block;
+}
+
+.nav ul li a {
+    padding: 18px;
+    text-transform: uppercase;
+    color: rgba(0, 35, 122, 0.5);
+    font-size: 18px;
+    text-decoration: none;
+    display: block;
+}
+
+.nav ul li a:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1), inset 0 0 1px rgba(255, 255, 255, 0.6);
+    background: rgba(255, 255, 255, 0.1);
+    color: rgba(0, 35, 122, 0.7);
+}
+
+/*-----------------*/
+/*  Formulaire     */
+/*-----------------*/
+
+.forms {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(45deg, greenyellow, dodgerblue);
+}
+
+.form {
+    position: relative;
+    padding: 50px 50px;
+    background: #fff;
+    border-radius: 10px;
+}
+
+.form h1 {
+    font-size: 2em;
+    border-left: 5px solid dodgerblue;
+    padding: 10px;
+    color: #000;
+    letter-spacing: 5px;
+    margin-bottom: 60px;
+    font-weight: bold;
+    padding-left: 10px;
+}
+
+.form .inputbox {
+    position: relative;
+    width: 300px;
+    height: 50px;
+    margin-bottom: 50px;
+}
+
+.form .inputbox input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    border: 2px solid #000;
+    outline: none;
+    background: none;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 1.2em;
+}
+
+.form .inputbox:last-child {
+    margin-bottom: 0;
+}
+
+.form .inputbox span {
+    position: absolute;
+    top: 14px;
+    left: 20px;
+    font-size: 1em;
+    transition: 0.6s;
+    font-family: sans-serif;
+}
+
+.form .inputbox input:focus ~ span,
+.form .inputbox input:valid ~ span {
+    transform: translateX(-13px) translateY(-35px);
+    font-size: 1em;
+}
+
+.form .inputbox [type="button"] {
+    width: 50%;
+    background: dodgerblue;
+    color: #fff;
+    border: #fff;
+}
+
+.form .inputbox:hover [type="button"] {
+    background: linear-gradient(45deg, greenyellow, dodgerblue);
 }

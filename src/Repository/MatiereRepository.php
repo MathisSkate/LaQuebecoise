@@ -2,30 +2,30 @@
 
 namespace App\Repository;
 
-use App\Entity\Location;
+use App\Entity\Matiere;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @method Location|null find($id, $lockMode = null, $lockVersion = null)
- * @method Location|null findOneBy(array $criteria, array $orderBy = null)
- * @method Location[]    findAll()
- * @method Location[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Matiere|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Matiere|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Matiere[]    findAll()
+ * @method Matiere[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class LocationRepository extends ServiceEntityRepository
+class MatiereRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Location::class);
+        parent::__construct($registry, Matiere::class);
     }
 
     /**
      * @throws ORMException
      * @throws OptimisticLockException
      */
-    public function add(Location $entity, bool $flush = true): void
+    public function add(Matiere $entity, bool $flush = true): void
     {
         $this->_em->persist($entity);
         if ($flush) {
@@ -37,7 +37,7 @@ class LocationRepository extends ServiceEntityRepository
      * @throws ORMException
      * @throws OptimisticLockException
      */
-    public function remove(Location $entity, bool $flush = true): void
+    public function remove(Matiere $entity, bool $flush = true): void
     {
         $this->_em->remove($entity);
         if ($flush) {
@@ -46,15 +46,15 @@ class LocationRepository extends ServiceEntityRepository
     }
 
     // /**
-    //  * @return Location[] Returns an array of Location objects
+    //  * @return Matiere[] Returns an array of Matiere objects
     //  */
     /*
     public function findByExampleField($value)
     {
-        return $this->createQueryBuilder('l')
-            ->andWhere('l.exampleField = :val')
+        return $this->createQueryBuilder('m')
+            ->andWhere('m.exampleField = :val')
             ->setParameter('val', $value)
-            ->orderBy('l.id', 'ASC')
+            ->orderBy('m.id', 'ASC')
             ->setMaxResults(10)
             ->getQuery()
             ->getResult()
@@ -63,10 +63,10 @@ class LocationRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?Location
+    public function findOneBySomeField($value): ?Matiere
     {
-        return $this->createQueryBuilder('l')
-            ->andWhere('l.exampleField = :val')
+        return $this->createQueryBuilder('m')
+            ->andWhere('m.exampleField = :val')
             ->setParameter('val', $value)
             ->getQuery()
             ->getOneOrNullResult()

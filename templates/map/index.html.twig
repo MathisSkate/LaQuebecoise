@@ -15,6 +15,7 @@
         var lat = 49.09635;
         var lon = 1.4471494459459464;
         var carte = null;
+
         function initMap() {
             carte = L.map("map").setView([lat, lon], 15);
             L.tileLayer("https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png", {
@@ -32,24 +33,24 @@
         }
 
         function createMarker() {
-            {% for location in locations %}
-                $.ajax({
-                    url: 'https://nominatim.openstreetmap.org/search?format=json&street={{ location.rue }}&city={{ location.ville }}&country={{ location.pays }}&postalcode={{ location.codepostal }}&limit=1',
-                    method: "GET",
-                    dataType: "json",
-                    success: function (data) {
-                        console.log(data);
-                        var marker = L.marker([data[0].lat, data[0].lon]).addTo(carte);
-                        marker.bindPopup("<center>{{ location.nom }} <br/><br/> {{ location.description }}</center>");
-                    }
-                });
+            {% for localisation in localisations %}
+            $.ajax({
+                url: 'https://nominatim.openstreetmap.org/search?format=json&street={{ localisation.rue }}&city={{ localisation.ville }}&country={{ localisation.pays }}&postalcode={{ localisation.codepostal }}&limit=1',
+                method: "GET",
+                dataType: "json",
+                success: function (data) {
+                    console.log(data);
+                    var marker = L.marker([data[0].lat, data[0].lon]).addTo(carte);
+                    marker.bindPopup("<center>{{ localisation.nom }} <br/><br/> {{ localisation.description }}</center>");
+                }
+            });
             {% endfor %}
         }
 
     </script>
     <style>
         html, body, #map {
-            height: 96%;
+            height: 95%;
             margin: 0px;
             padding: 0px;
         }

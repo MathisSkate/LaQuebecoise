@@ -7,7 +7,6 @@
         <table class="table">
             <thead>
             <tr>
-                <th>Id</th>
                 <th>Nom</th>
                 <th>Prix</th>
                 <th>Type</th>
@@ -17,19 +16,18 @@
             <tbody>
             {% for produit in produits %}
                 <tr>
-                    <td>{{ produit.id }}</td>
                     <td>{{ produit.nom }}</td>
-                    <td>{{ produit.prix }}</td>
+                    <td>{{ produit.prix }} €</td>
                     <td>{{ produit.type }}</td>
-                    <td><a href="{{ path('app_menu_edit', {'id': produit.id}) }}">Modifier</a></td>
+                    <td><a href="{{ path('app_produit_edit', {'id': produit.id}) }}">Modifier</a></td>
                 </tr>
             {% else %}
                 <tr>
-                    <td colspan="5">Aucun Produit trouvé</td>
+                    <td colspan="4">Aucun Produit trouvé</td>
                 </tr>
             {% endfor %}
             </tbody>
         </table>
-        <a href="{{ path('app_menu_new') }}">Créer un nouveau Produit</a>
+        <a href="{{ path('app_produit_new') }}">Créer un nouveau Produit</a>
     </div>
 {% endblock %}

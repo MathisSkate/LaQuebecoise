@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="forms">
+        <div class="form align-content-center text-center">
+            <h1>Créer une nouvelle Matière Première</h1>
+
+            {{ include('matiere/_form.html.twig') }}
+
+            <a href="{{ path('app_matiere_index') }}">Retour à la liste</a>
+        </div>
+    </div>
+{% endblock %}

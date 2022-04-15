@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Repository\LocationRepository;
+use App\Repository\LocalisationRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -10,11 +10,11 @@ use Symfony\Component\Routing\Annotation\Route;
 class MapController extends AbstractController
 {
     #[Route('/map', name: 'app_map')]
-    public function index(LocationRepository $locationRepository): Response
+    public function index(LocalisationRepository $localisationRepository): Response
     {
         return $this->render('map/index.html.twig', [
             'controller_name' => 'MapController',
-            'locations' => $locationRepository->findAll(),
+            'localisations' => $localisationRepository->findAll(),
         ]);
     }
 }
