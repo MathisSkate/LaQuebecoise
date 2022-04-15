@@ -21,6 +21,7 @@ class ProduitType extends AbstractType
                 'type',
                 ChoiceType::class,
                 [
+                    'label' => false,
                     'choices' => [
                         'Plat' => 'plat',
                         'Dessert' => 'dessert',

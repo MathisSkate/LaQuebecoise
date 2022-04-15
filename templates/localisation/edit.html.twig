@@ -6,10 +6,8 @@
             <h1>Modifier une Localisation</h1>
 
             {{ include('localisation/_form.html.twig', {'button_label': 'Modifier'}) }}
-
-            <a href="{{ path('app_localisation_index') }}">Retour à la liste</a>
-
-            {{ include('localisation/_delete_form.html.twig') }}
+            <br/>
+            <a href="{{ path('app_localisation_index') }}"><button class="button">Retour à la liste</button></a>
         </div>
     </div>
 {% endblock %}
