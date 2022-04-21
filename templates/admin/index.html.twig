@@ -5,8 +5,8 @@
         <h1 id="titre" class="text-center">FoodTruck, La Québecoise</h1>
         {% if app.user %}
             <div class="mt-3 mb-3 text-center">
-                <h2>Tu es connecté en tant que {{ app.user.username }}, <a href="{{ path('app_logout') }}">Se
-                        déconnecter</a></h2>
+                <h2>Tu es connecté en tant que {{ app.user.username }}</h2>
+                <p><a href="{{ path('app_logout') }}"><button class="button">Se deconnecter</button></a></p>
             </div>
         {% endif %}
         <div class="text-center">
@@ -14,8 +14,8 @@
                 <div class="col-sm">
                     <h3 class="text-decoration-underline">Gestion des Produits</h3>
                     <a href="{{ path('app_produit_index') }}"><img class="border border-dark"
-                                                               src="{{ asset('images/produits.png') }}" width="250"
-                                                               alt="produits"/></a>
+                                                                   src="{{ asset('images/produits.png') }}" width="250"
+                                                                   alt="produits"/></a>
                 </div>
                 <div class="col-sm">
                     <h3 class="text-decoration-underline">Gestion des Localisations</h3>
@@ -34,8 +34,8 @@
                 <div class="col-sm">
                     <h3 class="text-decoration-underline">Gestion des Matières Premières</h3>
                     <a href="{{ path('app_matiere_index') }}"><img class="border border-dark"
-                                                           src="{{ asset('images/achats.png') }}" width="250"
-                                                           alt="ventes"/></a>
+                                                                   src="{{ asset('images/achats.png') }}" width="250"
+                                                                   alt="ventes"/></a>
                 </div>
             </div>
         </div>
