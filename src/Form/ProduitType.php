@@ -14,8 +14,6 @@ class ProduitType extends AbstractType
     {
         $builder
             ->add('nom', null, ['label' => false, 'attr' => ['placeholder' => 'Nom']])
-            ->add('description', null, ['label' => false, 'attr' => ['placeholder' => 'Description']])
-            ->add('hasDescription', null, ['label' => 'à une description ?'])
             ->add('prix', null, ['label' => false, 'attr' => ['placeholder' => 'Prix']])
             ->add(
                 'type',
@@ -27,7 +25,6 @@ class ProduitType extends AbstractType
                         'Dessert' => 'dessert',
                         'Boisson' => 'boisson',
                         'Frite' => 'frite',
-                        'Normand' => 'normand',
                         'Autre' => 'autre',
                     ],
                     'expanded' => true

@@ -22,7 +22,6 @@ class CarteController extends AbstractController
             'boissons' => $produitRepository->findByValue("boisson"),
             'frites' => $produitRepository->findByValue("frite"),
             'autres' => $produitRepository->findByValue("autre"),
-            'normands' => $produitRepository->findByValue("normand"),
         ]);
     }
 }

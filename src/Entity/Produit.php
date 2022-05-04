@@ -16,12 +16,6 @@ class Produit
     #[ORM\Column(type: 'string', length: 255)]
     private $nom;
 
-    #[ORM\Column(type: 'text', nullable: true)]
-    private $description;
-
-    #[ORM\Column(type: 'boolean')]
-    private $hasDescription;
-
     #[ORM\Column(type: 'float')]
     private $prix;
 
@@ -41,30 +35,6 @@ class Produit
     public function setNom(string $nom): self
     {
         $this->nom = $nom;
-
-        return $this;
-    }
-
-    public function getDescription(): ?string
-    {
-        return $this->description;
-    }
-
-    public function setDescription(?string $description): self
-    {
-        $this->description = $description;
-
-        return $this;
-    }
-
-    public function getHasDescription(): ?bool
-    {
-        return $this->hasDescription;
-    }
-
-    public function setHasDescription(bool $hasDescription): self
-    {
-        $this->hasDescription = $hasDescription;
 
         return $this;
     }
