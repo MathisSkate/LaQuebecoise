@@ -15,11 +15,56 @@
 <body>
 <nav class="nav">
     <ul class="mx-auto">
-        <li><a href="{{ path('app_index') }}">Acceuil</a></li>
-        <li><a href="{{ path('app_carte_index') }}">Notre carte</a></li>
-        <li><a href="{{ path('app_map') }}">Où nous trouver</a></li>
-        <li><a href="{{ path('app_index') }}">Nous contacter</a></li>
-        <li><a href="{{ path('app_admin') }}">Administration</a></li>
+        <li>
+            <a href="{{ path('app_index') }}">
+                <figure>
+                    <img src="{{ asset('images/accueil.png') }}" width="100" alt="acceuil"/>
+                    <figcaption>
+                        Accueil
+                    </figcaption>
+                </figure>
+            </a>
+        </li>
+        <li>
+            <a href="{{ path('app_carte_index') }}">
+                <figure>
+                    <img src="{{ asset('images/menu.png') }}" width="100" alt="menu"/>
+                    <figcaption>
+                        Notre carte
+                    </figcaption>
+                </figure>
+            </a>
+        </li>
+        <li>
+            <a href="{{ path('app_map') }}">
+                <figure>
+                    <img src="{{ asset('images/map.png') }}" width="100" alt="map"/>
+                    <figcaption>
+                        Où nous trouver
+                    </figcaption>
+                </figure>
+            </a>
+        </li>
+        <li>
+            <a href="{{ path('app_index') }}">
+                <figure>
+                    <img src="{{ asset('images/contact.png') }}" width="100" alt="contact"/>
+                    <figcaption>
+                        Nous contacter
+                    </figcaption>
+                </figure>
+            </a>
+        </li>
+        <li>
+            <a href="{{ path('app_admin') }}">
+                <figure>
+                    <img src="{{ asset('images/admin.png') }}" width="100" alt="admin"/>
+                    <figcaption>
+                        Administration
+                    </figcaption>
+                </figure>
+            </a>
+        </li>
     </ul>
 </nav>
 {% block body %}

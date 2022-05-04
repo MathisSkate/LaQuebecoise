@@ -1,12 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+/*-----------------*/
+/*  Fonts          */
+/*-----------------*/
+
+@import url('https://fonts.googleapis.com/css2?family=Asap&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Asap&family=Rubik:wght@500&display=swap');
 
 html {
     font-size: 12px;
 }
 
 body {
-    text-transform: uppercase;
-    font-family: 'Permanent Marker', cursive;
+    font-family: 'Asap', sans-serif;
 }
 
 .body {
@@ -80,7 +84,9 @@ body {
 .nav {
     mask-image: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, #ffffff 25%, #ffffff 75%, rgba(255, 255, 255, 0) 100%);
     padding: 30px 0;
-    background-color: deepskyblue;
+    background-color: goldenrod;
+    text-transform: uppercase;
+    font-family: 'Rubik', sans-serif;
 }
 
 .nav ul {
