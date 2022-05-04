@@ -253,3 +253,23 @@ body {
     width: 115%;
     height: 115%;
 }
+
+/*-----------------*/
+/*  Rating         */
+/*-----------------*/
+
+#avis .form-check {
+    display: inline-block;
+}
+
+#avis input[type="radio"] {
+    display: none;
+}
+
+#avis input[type="radio"] ~ label {
+    font-size: 20px;
+}
+
+#avis input[type="radio"]:checked ~ label {
+    color: red;
+}

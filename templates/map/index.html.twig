@@ -41,7 +41,7 @@
                 success: function (data) {
                     console.log(data);
                     var marker = L.marker([data[0].lat, data[0].lon]).addTo(carte);
-                    marker.bindPopup("<center>{{ localisation.nom }} <br/><br/> {{ localisation.description }}</center>");
+                    marker.bindPopup("<center>{{ localisation.nom }} <br/><br/><strong>{{ localisation.description }}</strong></center>");
                 }
             });
             {% endfor %}

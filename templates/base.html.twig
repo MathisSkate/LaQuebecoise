@@ -2,15 +2,15 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %}FoodTruck, La Quebecoise!{% endblock %}</title>
-    <link rel="icon"
-          href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+    <title>{% block title %}FoodTruck, T'as La Frite!{% endblock %}</title>
+    <link rel="icon" href="{{ asset('images/logos/icon.jpg') }}">
     {% block stylesheets %}
         {{ encore_entry_link_tags('app') }}
     {% endblock %}
     {% block javascripts %}
         {{ encore_entry_script_tags('app') }}
     {% endblock %}
+    <script src="https://kit.fontawesome.com/0583a05b6b.js" crossorigin="anonymous"></script>
 </head>
 <body>
 <nav class="nav">
@@ -18,7 +18,7 @@
         <li>
             <a href="{{ path('app_index') }}">
                 <figure>
-                    <img src="{{ asset('images/accueil.png') }}" width="100" alt="acceuil"/>
+                    <img src="{{ asset('images/logos/accueil.png') }}" width="50" alt="acceuil"/>
                     <figcaption>
                         Accueil
                     </figcaption>
@@ -28,7 +28,7 @@
         <li>
             <a href="{{ path('app_carte_index') }}">
                 <figure>
-                    <img src="{{ asset('images/menu.png') }}" width="100" alt="menu"/>
+                    <img src="{{ asset('images/logos/menu.png') }}" width="50" alt="menu"/>
                     <figcaption>
                         Notre carte
                     </figcaption>
@@ -38,7 +38,7 @@
         <li>
             <a href="{{ path('app_map') }}">
                 <figure>
-                    <img src="{{ asset('images/map.png') }}" width="100" alt="map"/>
+                    <img src="{{ asset('images/logos/map.png') }}" width="50" alt="map"/>
                     <figcaption>
                         Où nous trouver
                     </figcaption>
@@ -48,9 +48,36 @@
         <li>
             <a href="{{ path('app_index') }}">
                 <figure>
-                    <img src="{{ asset('images/contact.png') }}" width="100" alt="contact"/>
+                    <img src="{{ asset('images/logos/icon.jpg') }}" width="100" alt="acceuil"/>
+                </figure>
+            </a>
+        </li>
+        <li>
+            <a href="{{ path('app_parcours') }}">
+                <figure>
+                    <img src="{{ asset('images/logos/parcours.png') }}" width="50" alt="parcours"/>
                     <figcaption>
-                        Nous contacter
+                        Mon Parcours
+                    </figcaption>
+                </figure>
+            </a>
+        </li>
+        <li>
+            <a href="{{ path('app_index') }}">
+                <figure>
+                    <img src="{{ asset('images/logos/prestation.png') }}" width="50" alt="prestation"/>
+                    <figcaption>
+                        Nos prestations
+                    </figcaption>
+                </figure>
+            </a>
+        </li>
+        <li>
+            <a href="{{ path('app_avis_index') }}">
+                <figure>
+                    <img src="{{ asset('images/logos/avis.png') }}" width="50" alt="avis"/>
+                    <figcaption>
+                        Vos Avis
                     </figcaption>
                 </figure>
             </a>
@@ -58,10 +85,7 @@
         <li>
             <a href="{{ path('app_admin') }}">
                 <figure>
-                    <img src="{{ asset('images/admin.png') }}" width="100" alt="admin"/>
-                    <figcaption>
-                        Administration
-                    </figcaption>
+                    <img src="{{ asset('images/logos/admin.png') }}" width="1" height="1"/>
                 </figure>
             </a>
         </li>
