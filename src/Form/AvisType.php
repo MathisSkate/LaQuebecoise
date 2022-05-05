@@ -15,7 +15,7 @@ class AvisType extends AbstractType
         $builder
             ->add('nom')
             ->add('prenom')
-            ->add('des')
+            ->add('description')
             ->add('note', ChoiceType::class, [
                 'choices' => [
                     '1' => 1,
