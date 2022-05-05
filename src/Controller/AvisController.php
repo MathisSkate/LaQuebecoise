@@ -24,7 +24,7 @@ class AvisController extends AbstractController
     #[Route('/new', name: 'app_avis_new', methods: ['GET', 'POST'])]
     public function new(Request $request, AvisRepository $avisRepository): Response
     {
-        //if(empty($avisRepository->findBy(array('ip' => $request->getClientIp())))) {
+        if(empty($avisRepository->findBy(array('ip' => $request->getClientIp())))) {
         print_r($request->getClientIp());
         $avi = new Avis();
         $avi -> setDate(new \DateTime('@'.strtotime('now')));
@@ -41,10 +41,10 @@ class AvisController extends AbstractController
                 'avi' => $avi,
                 'form' => $form,
             ]);
-        /*}
-        else {
+        } else {
+            $this->addFlash('error', 'Vous avez déjà donné votre avis !');
             return $this->redirectToRoute('app_avis_index', [], Response::HTTP_SEE_OTHER);
-        }*/
+        }
     }
 
     #[Route('/{id}', name: 'app_avis_show', methods: ['GET'])]

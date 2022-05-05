@@ -28,6 +28,9 @@ class Avis
     #[ORM\Column(type: 'string', length: 255)]
     private $ip;
 
+    #[ORM\Column(type: 'string', length: 255)]
+    private $description;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -89,6 +92,18 @@ class Avis
     public function setIp(string $ip): self
     {
         $this->ip = $ip;
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(string $description): self
+    {
+        $this->description = $description;
 
         return $this;
     }

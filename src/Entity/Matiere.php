@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\MatiereRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: MatiereRepository::class)]
@@ -24,6 +26,11 @@ class Matiere
 
     #[ORM\Column(type: 'boolean')]
     private $isUnite;
+
+    public function __construct()
+    {
+        $this->achats = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -76,5 +83,10 @@ class Matiere
         $this->isUnite = $isUnite;
 
         return $this;
+    }
+
+    public function __toString(): string
+    {
+        return $this->getNom();
     }
 }

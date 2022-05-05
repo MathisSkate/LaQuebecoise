@@ -255,7 +255,7 @@ body {
 }
 
 /*-----------------*/
-/*  Rating         */
+/*  Avis           */
 /*-----------------*/
 
 #avis .form-check {
@@ -272,4 +272,15 @@ body {
 
 #avis input[type="radio"]:checked ~ label {
     color: red;
+}
+
+.star {
+    font-size: 30px;
+}
+
+.gold {
+    color: darkgoldenrod;
+}
+.avi {
+    width: 25%;
 }

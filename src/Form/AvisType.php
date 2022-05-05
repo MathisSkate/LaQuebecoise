@@ -3,9 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Avis;
-use Brokoskokoli\StarRatingBundle\Form\RatingType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\ChoiceList\ChoiceList;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -17,6 +15,7 @@ class AvisType extends AbstractType
         $builder
             ->add('nom')
             ->add('prenom')
+            ->add('des')
             ->add('note', ChoiceType::class, [
                 'choices' => [
                     '1' => 1,
