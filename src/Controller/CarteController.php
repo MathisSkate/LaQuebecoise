@@ -17,11 +17,11 @@ class CarteController extends AbstractController
     public function index(ProduitRepository $produitRepository): Response
     {
         return $this->render('carte/index.html.twig', [
-            'plats' => $produitRepository->findByValue("plat"),
-            'desserts' => $produitRepository->findByValue("dessert"),
-            'boissons' => $produitRepository->findByValue("boisson"),
-            'frites' => $produitRepository->findByValue("frite"),
-            'autres' => $produitRepository->findByValue("autre"),
+            'plats' => $produitRepository->findByValue("Plat"),
+            'desserts' => $produitRepository->findByValue("Dessert"),
+            'boissons' => $produitRepository->findByValue("Boisson"),
+            'frites' => $produitRepository->findByValue("Frite"),
+            'autres' => $produitRepository->findByValue("Autre"),
         ]);
     }
 }

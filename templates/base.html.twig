@@ -91,6 +91,16 @@
         </li>
     </ul>
 </nav>
+{% for flash in app.flashes('success') %}
+    <div class="text-center alert alert-success">
+        <strong>{{ flash }}</strong>
+    </div>
+{% endfor %}
+{% for flash in app.flashes('error') %}
+    <div class="text-center alert alert-danger">
+        <strong>{{ flash }}</strong>
+    </div>
+{% endfor %}
 {% block body %}
 {% endblock %}
 </body>

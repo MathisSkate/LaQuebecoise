@@ -1,11 +1,6 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    {% for flash in app.flashes('error') %}
-        <div class="text-center alert alert-danger">
-            <strong>{{ flash }}</strong>
-        </div>
-    {% endfor %}
     <div class="container">
         <h1 class="text-center text-decoration-underline">Vos avis</h1>
         <div class="avis grid center text-center d-flex flex-wrap justify-content-center">
@@ -63,7 +58,7 @@
             {% endfor %}
         </div>
         <a class="d-flex flex-wrap justify-content-center text-decoration-none" href="{{ path('app_avis_new') }}">
-            <input type="button" value="Donnez le votre"/>
+            <button class="button">Donnez le votre"</button>
         </a>
     </div>
 {% endblock %}

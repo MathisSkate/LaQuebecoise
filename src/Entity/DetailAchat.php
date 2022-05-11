@@ -22,6 +22,9 @@ class DetailAchat
     #[ORM\Column(type: 'float')]
     private $quantite;
 
+    #[ORM\Column(type: 'float')]
+    private $prix;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -59,6 +62,18 @@ class DetailAchat
     public function setQuantite(float $quantite): self
     {
         $this->quantite = $quantite;
+
+        return $this;
+    }
+
+    public function getPrix(): ?float
+    {
+        return $this->prix;
+    }
+
+    public function setPrix(float $prix): self
+    {
+        $this->prix = $prix;
 
         return $this;
     }

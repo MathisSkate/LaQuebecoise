@@ -9,6 +9,7 @@
                 <th>Date</th>
                 <th>Matiere</th>
                 <th>Quantite</th>
+                <th>Prix</th>
                 <th colspan="2">Actions</th>
             </tr>
             </thead>
@@ -18,6 +19,7 @@
                     <td>{{ detail_achat.achat.date | date('d/m/Y') }}</td>
                     <td>{{ detail_achat.matiere }}</td>
                     <td>{{ detail_achat.quantite }}</td>
+                    <td>{{ detail_achat.prix }}</td>
                     <td><a href="{{ path('app_detail_achat_edit', {'id': detail_achat.id}) }}">
                             <button class="button">Modifier</button>
                         </a></td>
@@ -25,7 +27,7 @@
                 </tr>
             {% else %}
                 <tr>
-                    <td colspan="5">Aucun achat trouvé</td>
+                    <td colspan="6">Aucun achat trouvé</td>
                 </tr>
             {% endfor %}
             </tbody>

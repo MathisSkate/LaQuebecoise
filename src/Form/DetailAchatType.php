@@ -13,8 +13,9 @@ class DetailAchatType extends AbstractType
     {
         $builder
             ->add('achat', null, ['label' => false, 'attr' => ['placeholder' => 'Achat']])
-            ->add('matiere', null, ['label' => false, 'attr' => ['placeholder' => 'Matière']])
+            ->add('matiere', null, ['label' => false, 'placeholder' => 'Matière'])
             ->add('quantite', null, ['label' => false, 'attr' => ['placeholder' => 'Quantité']])
+            ->add('prix', null, ['label' => false, 'attr' => ['placeholder' => 'Prix']])
         ;
     }
 

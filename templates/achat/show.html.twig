@@ -1,15 +1,16 @@
 {% extends 'base.html.twig' %}
-
+{% set montant = 0 %}
 {% block body %}
     <h1 class="text-center">Achat du {{ achat.date | date('d/m/Y') }}</h1>
     <div class="container text-center justify-content-center border border-dark">
         {% for detail in achat.detailAchats %}
             {% if detail.matiere.isUnite %}
-                <h2>{{ detail.matiere }} : {{ detail.quantite }}</h2>
+                <h2>{{ detail.matiere }} : {{ detail.quantite }} ...... {{ detail.prix }} €</h2>
             {% else %}
-                <h2>{{ detail.matiere }} : {{ detail.quantite }} g</h2>
+                <h2>{{ detail.matiere }} : {{ detail.quantite }} g  ...... {{ detail.prix }} €</h2>
             {% endif %}
+            {% set montant = montant + detail.prix %}
         {% endfor %}
-        <h3>Total : {{ achat.prix }} €</h3>
+        <h3>Total : {{ montant }} €</h3>
     </div>
 {% endblock %}

@@ -14,7 +14,6 @@ class AchatType extends AbstractType
     {
         $builder
             ->add('date', DateType::class, [ 'label' => false, 'html5' => 'true', 'widget' => 'single_text', 'attr' => ['placeholder' => 'Date'] ])
-            ->add('prix', null, ['label' => false, 'attr' => ['placeholder' => 'Prix']])
         ;
     }
 

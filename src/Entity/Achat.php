@@ -19,9 +19,6 @@ class Achat
     #[ORM\Column(type: 'date')]
     private $date;
 
-    #[ORM\Column(type: 'float')]
-    private $prix;
-
     #[ORM\OneToMany(mappedBy: 'achat', targetEntity: DetailAchat::class)]
     private $detailAchats;
 
@@ -43,18 +40,6 @@ class Achat
     public function setDate(\DateTimeInterface $date): self
     {
         $this->date = $date;
-
-        return $this;
-    }
-
-    public function getPrix(): ?float
-    {
-        return $this->prix;
-    }
-
-    public function setPrix(float $prix): self
-    {
-        $this->prix = $prix;
 
         return $this;
     }

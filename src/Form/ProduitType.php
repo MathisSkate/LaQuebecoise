@@ -21,16 +21,13 @@ class ProduitType extends AbstractType
                 [
                     'label' => false,
                     'choices' => [
-                        'Plat' => 'plat',
-                        'Dessert' => 'dessert',
-                        'Boisson' => 'boisson',
-                        'Frite' => 'frite',
-                        'Autre' => 'autre',
+                        'Plat' => 'Plat',
+                        'Dessert' => 'Dessert',
+                        'Boisson' => 'Boisson',
+                        'Frite' => 'Frite',
+                        'Autre' => 'Autre',
                     ],
-                    'expanded' => true,
-                    'attr' => [
-                        'class' => 'text-white'
-                    ]
+                    'placeholder' => 'Type'
                 ]
             );;
     }
