@@ -45,6 +45,18 @@ class MatiereRepository extends ServiceEntityRepository
         }
     }
 
+    public function findByName($value)
+    {
+        return $this->createQueryBuilder('m')
+            ->andWhere('m.nom = :val')
+            ->setParameter('val', $value)
+            ->orderBy('m.id', 'ASC')
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
     // /**
     //  * @return Matiere[] Returns an array of Matiere objects
     //  */

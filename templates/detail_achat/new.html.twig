@@ -3,11 +3,11 @@
 {% block body %}
     <br/>
     <div class="form m-auto align-content-center text-center">
-        <h1 class="h2 text-white">Créer une nouvelle Matière Première</h1>
+        <h1 class="h2 text-white">Créer un Produit d'Achat</h1>
 
-        {{ include('matiere/_form.html.twig') }}
+        {{ include('detail_achat/_form.html.twig') }}
         <br/>
-        <a href="{{ path('app_matiere_index') }}">
+        <a href="{{ path('app_detail_achat_index') }}">
             <button class="submit">Retour à la liste</button>
         </a>
     </div>

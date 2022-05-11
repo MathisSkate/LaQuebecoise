@@ -13,10 +13,11 @@ class AvisType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('nom')
-            ->add('prenom')
-            ->add('description')
+            ->add('nom', null, ['label' => false, 'attr' => ['placeholder' => 'Nom']])
+            ->add('prenom', null, ['label' => false, 'attr' => ['placeholder' => 'Prénom']])
+            ->add('description', null, ['label' => false, 'attr' => ['placeholder' => 'Description']])
             ->add('note', ChoiceType::class, [
+                'label' => false,
                 'choices' => [
                     '1' => 1,
                     '2' => 2,
@@ -25,7 +26,9 @@ class AvisType extends AbstractType
                     '5' => 5,
                 ],
                 'expanded' => true,
-                'multiple' => false]);
+                'multiple' => false,
+                'attr' => ['class' => 'text-white']
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

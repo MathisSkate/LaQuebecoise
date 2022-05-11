@@ -3,11 +3,14 @@
 {% block title %}New Avis{% endblock %}
 
 {% block body %}
-    <div class="container">
-        <h1>Create new Avis</h1>
+    <br/>
+    <div class="form m-auto align-content-center text-center">
+        <h1 class="h2 text-white">Donnez votre Avis</h1>
 
-        {{ include('avis/_form.html.twig') }}
-
-        <a href="{{ path('app_avis_index') }}">back to list</a>
+        {{ include('achat/_form.html.twig') }}
+        <br/>
+        <a href="{{ path('app_achat_index') }}">
+            <button class="submit">Retour aux avis</button>
+        </a>
     </div>
 {% endblock %}

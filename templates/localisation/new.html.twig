@@ -1,13 +1,14 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div class="forms">
-        <div class="form align-content-center text-center">
-            <h1>Créer une nouvelle Localisation</h1>
+    <br>
+    <div class="form m-auto align-content-center text-center">
+        <h1 class="h2 text-white">Créer une nouvelle Localisation</h1>
 
-            {{ include('localisation/_form.html.twig') }}
-            <br/>
-            <a href="{{ path('app_localisation_index') }}"><button class="button">Retour à la liste</button></a>
-        </div>
+        {{ include('localisation/_form.html.twig') }}
+        <br/>
+        <a href="{{ path('app_localisation_index') }}">
+            <button class="submit">Retour à la liste</button>
+        </a>
     </div>
 {% endblock %}

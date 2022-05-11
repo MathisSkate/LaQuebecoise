@@ -2,32 +2,27 @@
 
 namespace App\Entity;
 
-use App\Repository\MatiereRepository;
+use App\Repository\AchatRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
-#[ORM\Entity(repositoryClass: MatiereRepository::class)]
-class Matiere
+#[ORM\Entity(repositoryClass: AchatRepository::class)]
+class Achat
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
     private $id;
 
-    #[ORM\Column(type: 'string', length: 255)]
-    private $nom;
+    #[ORM\Column(type: 'date')]
+    private $date;
 
     #[ORM\Column(type: 'float')]
     private $prix;
 
-    #[ORM\Column(type: 'float')]
-    private $stock;
-
-    #[ORM\Column(type: 'boolean')]
-    private $isUnite;
-
-    #[ORM\OneToMany(mappedBy: 'matiere', targetEntity: DetailAchat::class)]
+    #[ORM\OneToMany(mappedBy: 'achat', targetEntity: DetailAchat::class)]
     private $detailAchats;
 
     public function __construct()
@@ -40,14 +35,14 @@ class Matiere
         return $this->id;
     }
 
-    public function getNom(): ?string
+    public function getDate(): ?\DateTimeInterface
     {
-        return $this->nom;
+        return $this->date;
     }
 
-    public function setNom(string $nom): self
+    public function setDate(\DateTimeInterface $date): self
     {
-        $this->nom = $nom;
+        $this->date = $date;
 
         return $this;
     }
@@ -64,33 +59,9 @@ class Matiere
         return $this;
     }
 
-    public function getStock(): ?float
-    {
-        return $this->stock;
-    }
-
-    public function setStock(float $stock): self
-    {
-        $this->stock = $stock;
-
-        return $this;
-    }
-
-    public function getIsUnite(): ?bool
-    {
-        return $this->isUnite;
-    }
-
-    public function setIsUnite(bool $isUnite): self
-    {
-        $this->isUnite = $isUnite;
-
-        return $this;
-    }
-
     public function __toString(): string
     {
-        return $this->getNom();
+        return $this -> getDate() -> format('d/m/Y');
     }
 
     /**
@@ -105,7 +76,7 @@ class Matiere
     {
         if (!$this->detailAchats->contains($detailAchat)) {
             $this->detailAchats[] = $detailAchat;
-            $detailAchat->setMatiere($this);
+            $detailAchat->setAchat($this);
         }
 
         return $this;
@@ -115,8 +86,8 @@ class Matiere
     {
         if ($this->detailAchats->removeElement($detailAchat)) {
             // set the owning side to null (unless already changed)
-            if ($detailAchat->getMatiere() === $this) {
-                $detailAchat->setMatiere(null);
+            if ($detailAchat->getAchat() === $this) {
+                $detailAchat->setAchat(null);
             }
         }
 

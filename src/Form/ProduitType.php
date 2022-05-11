@@ -27,7 +27,10 @@ class ProduitType extends AbstractType
                         'Frite' => 'frite',
                         'Autre' => 'autre',
                     ],
-                    'expanded' => true
+                    'expanded' => true,
+                    'attr' => [
+                        'class' => 'text-white'
+                    ]
                 ]
             );;
     }

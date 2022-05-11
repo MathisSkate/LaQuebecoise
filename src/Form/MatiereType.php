@@ -17,12 +17,15 @@ class MatiereType extends AbstractType
             ->add('prix', null, ['label' => false, 'attr' => ['placeholder' => 'Prix']])
             ->add('stock', null, ['label' => false, 'attr' => ['placeholder' => 'Quantité']])
             ->add('isUnite', ChoiceType::class, [
-                'label' => 'Conditionnement',
+                'label' => false,
                 'choices' => [
                     'Kilogramme' => '0',
                     'Unite' => '1',
                 ],
-                'expanded' => true
+                'expanded' => true,
+                'attr' => [
+                    'class' => 'text-white'
+                ]
             ])
         ;
     }
