@@ -11,7 +11,7 @@
                     <br/>
                     {% for plat in plats %}
                         <div class="produit">
-                            <h3 class="nom"><u>{{ plat.nom }}</u> {{ plat.prix }} €</h3>
+                            <h3 class="nom">{{ plat.nom }} {{ plat.prix }} €</h3>
                         </div>
                         <br/>
                     {% endfor %}
@@ -25,12 +25,7 @@
             <div class="container">
                 <div class="frites container">
                     <br/>
-                    <br/>
-                    <br/>
-                    <h2 id="frites" class="titre"><u>Les frites portions</u></h2>
-                    <img class="boussole" src="{{ asset('images/logos/boussole.png') }}"/>
-                    <br/>
-                    <br/>
+                    <h2 id="frites" class="titre">Les frites barquettes</h2>
                     <br/>
                     {% for frite in frites %}
                         <div class="produit">
@@ -42,7 +37,7 @@
             </div>
             <div class="container">
                 <div class="autres container">
-                    <h2 id="autres" class="titre">Petites faim</h2>
+                    <h2 id="autres" class="titre">Petite faim</h2>
                     <br/>
                     {% for autre in autres %}
                         <div class="produit">
@@ -52,7 +47,7 @@
                 </div>
                 <br/>
                 <div class="desserts container">
-                    <h2 id="desserts" class="titre">Desert</h2>
+                    <h2 id="desserts" class="titre">Dessert</h2>
                     <br/>
                     {% for dessert in desserts %}
                         <div class="produit">
@@ -72,10 +67,10 @@
                 </div>
             </div>
         </div>
-        <h3 id="voyage">Bon voyage !</h3>
+        <!--<h3 id="voyage">Bon voyage !</h3>-->
         <div class="pied">
             <img class="logo w-25" src="{{ asset('images/logos/icon.jpg') }}" alt="logo"/>
-            <img class="imgfrite w-25" src="{{ asset('images/poutine.png') }}" alt="frite"/>
+            <!--<img class="imgfrite w-25" src="{{ asset('images/poutine.png') }}" alt="frite"/>-->
             <div class="coordonnes">
                 <p>
                     Nous contacter : <br/>
@@ -83,7 +78,7 @@
                     0783320224
                 </p>
             </div>
-            <h4 class="alcool">* l'abus d'alcool est dangereux pour la santé, à consommer avec modération</h4>
+            <h4 class="alcool text-decoration-underline">* l'abus d'alcool est dangereux pour la santé, à consommer avec modération</h4>
         </div>
     </div>
 {% endblock %}

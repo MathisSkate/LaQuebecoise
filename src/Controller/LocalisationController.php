@@ -30,6 +30,7 @@ class LocalisationController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $localisationRepository->add($location);
+            $this -> addFlash('success', "Localisation créée");
             return $this->redirectToRoute('app_localisation_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -47,6 +48,7 @@ class LocalisationController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $localisationRepository->add($localisation);
+            $this -> addFlash('success', "Localisation modifiée");
             return $this->redirectToRoute('app_localisation_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -61,6 +63,7 @@ class LocalisationController extends AbstractController
     {
         if ($this->isCsrfTokenValid('delete'.$localisation->getId(), $request->request->get('_token'))) {
             $localisationRepository->remove($localisation);
+            $this -> addFlash('success', "Localisation supprimée");
         }
 
         return $this->redirectToRoute('app_localisation_index', [], Response::HTTP_SEE_OTHER);

@@ -30,6 +30,7 @@ class MatiereController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $matiereRepository->add($matiere);
+            $this -> addFlash('success', "Matière première créée");
             return $this->redirectToRoute('app_matiere_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -47,6 +48,7 @@ class MatiereController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $matiereRepository->add($matiere);
+            $this -> addFlash('success', "Matière première modifiée");
             return $this->redirectToRoute('app_matiere_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -61,6 +63,7 @@ class MatiereController extends AbstractController
     {
         if ($this->isCsrfTokenValid('delete'.$matiere->getId(), $request->request->get('_token'))) {
             $matiereRepository->remove($matiere);
+            $this -> addFlash('success', "Matière première supprimée");
         }
 
         return $this->redirectToRoute('app_matiere_index', [], Response::HTTP_SEE_OTHER);

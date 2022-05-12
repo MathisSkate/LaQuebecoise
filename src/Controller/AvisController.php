@@ -34,6 +34,7 @@ class AvisController extends AbstractController
 
             if ($form->isSubmitted() && $form->isValid()) {
                 $avisRepository->add($avi);
+                $this -> addFlash('success', 'Merci pour votre avis');
                 return $this->redirectToRoute('app_avis_index', [], Response::HTTP_SEE_OTHER);
             }
 

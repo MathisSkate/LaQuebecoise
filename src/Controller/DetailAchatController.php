@@ -34,6 +34,7 @@ class DetailAchatController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $detailAchat -> getMatiere() -> setStock($detailAchat -> getMatiere() -> getStock() + $detailAchat -> getQuantite());
             $detailAchatRepository->add($detailAchat);
+            $this -> addFlash('success', "Produit ajouté à l'achat");
             return $this->redirectToRoute('app_detail_achat_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -51,6 +52,7 @@ class DetailAchatController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $detailAchatRepository->add($detailAchat);
+            $this -> addFlash('success', "Achat modifié");
             return $this->redirectToRoute('app_detail_achat_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -64,7 +66,9 @@ class DetailAchatController extends AbstractController
     public function delete(Request $request, DetailAchat $detailAchat, DetailAchatRepository $detailAchatRepository): Response
     {
         if ($this->isCsrfTokenValid('delete'.$detailAchat->getId(), $request->request->get('_token'))) {
+            $detailAchat -> getMatiere() -> setStock($detailAchat -> getMatiere() -> getStock() - $detailAchat -> getQuantite());
             $detailAchatRepository->remove($detailAchat);
+            $this -> addFlash('success', "Produit supprimé de l'achat");
         }
 
         return $this->redirectToRoute('app_detail_achat_index', [], Response::HTTP_SEE_OTHER);

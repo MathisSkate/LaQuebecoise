@@ -22,7 +22,7 @@ import $ from 'jquery';
 
 import CircleType from 'circletype';
 
-circle();
+//circle();
 
 function circle() {
     const frites = new CircleType(document.getElementById('frites'));

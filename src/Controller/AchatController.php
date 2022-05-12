@@ -32,6 +32,7 @@ class AchatController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $achatRepository->add($achat);
+            $this -> addFlash('success', 'Vous venez de créer un Achat');
             return $this->redirectToRoute('app_achat_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -49,30 +50,17 @@ class AchatController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'app_achat_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Achat $achat, AchatRepository $achatRepository): Response
-    {
-        $form = $this->createForm(AchatType::class, $achat);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $achatRepository->add($achat);
-            return $this->redirectToRoute('app_achat_index', [], Response::HTTP_SEE_OTHER);
-        }
-
-        return $this->renderForm('achat/edit.html.twig', [
-            'achat' => $achat,
-            'form' => $form,
-        ]);
-    }
-
     #[Route('/{id}', name: 'app_achat_delete', methods: ['POST'])]
     public function delete(Request $request, Achat $achat, AchatRepository $achatRepository): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$achat->getId(), $request->request->get('_token'))) {
-            $achatRepository->remove($achat);
+        if ($achat->getDetailAchats()->count() == 0) {
+            if ($this->isCsrfTokenValid('delete' . $achat->getId(), $request->request->get('_token'))) {
+                $achatRepository->remove($achat);
+                $this -> addFlash('success', 'Vous venez de supprimer un Achat');
+            }
+        } else {
+            $this -> addFlash('error', 'Vous ne pouvez pas supprimer un Achat qui contient des Produits');
         }
-
         return $this->redirectToRoute('app_achat_index', [], Response::HTTP_SEE_OTHER);
     }
 }
