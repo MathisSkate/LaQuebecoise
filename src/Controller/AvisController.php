@@ -48,31 +48,6 @@ class AvisController extends AbstractController
         }
     }
 
-    #[Route('/{id}', name: 'app_avis_show', methods: ['GET'])]
-    public function show(Avis $avi): Response
-    {
-        return $this->render('avis/show.html.twig', [
-            'avi' => $avi,
-        ]);
-    }
-
-    #[Route('/{id}/edit', name: 'app_avis_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Avis $avi, AvisRepository $avisRepository): Response
-    {
-        $form = $this->createForm(AvisType::class, $avi);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $avisRepository->add($avi);
-            return $this->redirectToRoute('app_avis_index', [], Response::HTTP_SEE_OTHER);
-        }
-
-        return $this->renderForm('avis/edit.html.twig', [
-            'avi' => $avi,
-            'form' => $form,
-        ]);
-    }
-
     #[Route('/{id}', name: 'app_avis_delete', methods: ['POST'])]
     public function delete(Request $request, Avis $avi, AvisRepository $avisRepository): Response
     {
