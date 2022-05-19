@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="container align-content-center text-center">
+        <h1>Liste des Pertes</h1>
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Date</th>
+                <th>Nombre de produit</th>
+                <th colspan="2">Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for perte in pertes %}
+                <tr>
+                    <td>{{ perte.date ? perte.date|date('d/m/Y') : '' }}</td>
+                    <td>{{ perte.detailPertes.count }}</td>
+                    <td><a href="{{ path('app_perte_show', {'id': perte.id}) }}">
+                            <button class="button">Afficher</button>
+                        </a></td>
+                    <td>{{ include('perte/_delete_form.html.twig') }}</td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="4">Aucune perte trouvé</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <a href="{{ path('app_perte_new') }}">
+            <button class="button">Créer une nouvelle Perte</button>
+        </a>
+
+        <a href="{{ path('app_detail_perte_index') }}">
+            <button class="button">Vers les details</button>
+        </a>
+    </div>
+{% endblock %}

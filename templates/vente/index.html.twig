@@ -1,10 +1,40 @@
 {% extends 'base.html.twig' %}
-
-{% block title %}Hello VenteController!{% endblock %}
-
 {% block body %}
-    <div class="container text-center">
-        <h1>Gestion des Ventes</h1>
+    <div class="container align-content-center text-center">
+        <h1>Liste des Ventes</h1>
 
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Date</th>
+                <th>Nombre de produit</th>
+                <th colspan="2">Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for vente in ventes %}
+                <tr>
+                    <td>{{ vente.date ? vente.date|date('d/m/Y') : '' }}</td>
+                    <td>{{ vente.detailVentes.count }}</td>
+                    <td><a href="{{ path('app_vente_show', {'id': vente.id}) }}">
+                            <button class="button">Afficher</button>
+                        </a></td>
+                    <td>{{ include('vente/_delete_form.html.twig') }}</td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="4">Aucune vente trouvé</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <a href="{{ path('app_vente_new') }}">
+            <button class="button">Créer une nouvelle Vente</button>
+        </a>
+
+        <a href="{{ path('app_detail_vente_index') }}">
+            <button class="button">Vers les details</button>
+        </a>
     </div>
 {% endblock %}

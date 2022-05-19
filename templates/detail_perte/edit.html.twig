@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <br/>
+    <div class="form m-auto align-content-center text-center">
+        <h1 class="h2 text-white">Modifier une Perte</h1>
+
+        {{ include('detail_perte/_form.html.twig', {'button_label': 'Modifier'}) }}
+        <br/>
+        <a href="{{ path('app_detail_perte_index') }}">
+            <button class="submit">Retour à la liste</button>
+        </a>
+    </div>
+{% endblock %}

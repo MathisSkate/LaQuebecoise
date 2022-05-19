@@ -30,9 +30,13 @@ class Matiere
     #[ORM\OneToMany(mappedBy: 'matiere', targetEntity: DetailAchat::class)]
     private $detailAchats;
 
+    #[ORM\OneToMany(mappedBy: 'matiere', targetEntity: DetailPerte::class)]
+    private $detailPertes;
+
     public function __construct()
     {
         $this->detailAchats = new ArrayCollection();
+        $this->detailPertes = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -117,6 +121,36 @@ class Matiere
             // set the owning side to null (unless already changed)
             if ($detailAchat->getMatiere() === $this) {
                 $detailAchat->setMatiere(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, DetailPerte>
+     */
+    public function getDetailPertes(): Collection
+    {
+        return $this->detailPertes;
+    }
+
+    public function addDetailPerte(DetailPerte $detailPerte): self
+    {
+        if (!$this->detailPertes->contains($detailPerte)) {
+            $this->detailPertes[] = $detailPerte;
+            $detailPerte->setMatiere($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDetailPerte(DetailPerte $detailPerte): self
+    {
+        if ($this->detailPertes->removeElement($detailPerte)) {
+            // set the owning side to null (unless already changed)
+            if ($detailPerte->getMatiere() === $this) {
+                $detailPerte->setMatiere(null);
             }
         }
 

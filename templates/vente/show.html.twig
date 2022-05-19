@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <h1 class="text-center">Vente du {{ vente.date | date('d/m/Y') }}</h1>
+    <div class="container text-center justify-content-center border border-dark">
+        {% for detail in vente.detailVentes %}
+            <h2>{{ detail.produit }} : {{ detail.quantite }}</h2>
+        {% endfor %}
+    </div>
+{% endblock %}

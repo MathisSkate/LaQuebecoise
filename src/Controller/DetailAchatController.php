@@ -47,10 +47,12 @@ class DetailAchatController extends AbstractController
     #[Route('/{id}/edit', name: 'app_detail_achat_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, DetailAchat $detailAchat, DetailAchatRepository $detailAchatRepository): Response
     {
+        $oldStock = $detailAchat -> getQuantite();
         $form = $this->createForm(DetailAchatType::class, $detailAchat);
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
+            $detailAchat -> getMatiere() -> setStock($detailAchat -> getMatiere() -> getStock() - $oldStock);
+            $detailAchat -> getMatiere() -> setStock($detailAchat -> getMatiere() -> getStock() + $detailAchat -> getQuantite());
             $detailAchatRepository->add($detailAchat);
             $this -> addFlash('success', "Achat modifié");
             return $this->redirectToRoute('app_detail_achat_index', [], Response::HTTP_SEE_OTHER);
