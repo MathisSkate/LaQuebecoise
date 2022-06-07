@@ -1,45 +1,46 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div class="container">
-        <h1 id="titre" class="text-center">FoodTruck, La Québecoise</h1>
-        {% if app.user %}
-            <div class="mt-3 mb-3 text-center">
-                <h2>Tu es connecté en tant que {{ app.user.username }}</h2>
-                <p><a href="{{ path('app_logout') }}"><button class="button">Se deconnecter</button></a></p>
-            </div>
-        {% endif %}
-        <div class="text-center">
-            <div class="row">
-                <div class="col-sm">
-                    <h3 class="text-decoration-underline">Gestion des Produits</h3>
-                    <a href="{{ path('app_produit_index') }}"><img class="border border-dark"
-                                                                   src="{{ asset('images/logos/produits.png') }}" width="250"
-                                                                   alt="produits"/></a>
-                </div>
-                <div class="col-sm">
-                    <h3 class="text-decoration-underline">Gestion des Localisations</h3>
-                    <a href="{{ path('app_localisation_index') }}"><img class="border border-dark"
-                                                                        src="{{ asset('images/logos/localisations.png') }}"
-                                                                        width="250" alt="localisations"/></a>
-                </div>
-            </div>
-            <br/>
-            <br/>
-            <div class="row">
-                <div class="col-sm">
-                    <h3 class="text-decoration-underline">Gestion des Matières Premières</h3>
-                    <a href="{{ path('app_matiere_index') }}"><img class="border border-dark"
-                                                                   src="{{ asset('images/logos/matiere.png') }}" width="250"
-                                                                   alt="matiere"/></a>
-                </div>
-                <div class="col-sm">
-                    <h3 class="text-decoration-underline">Gestion des Mouvements Stocks</h3>
-                    <a href="{{ path('app_mouvement') }}"><img class="border border-dark"
-                                                                   src="{{ asset('images/logos/stock.png') }}" width="250"
-                                                                   alt="mouvements"/></a>
-                </div>
-            </div>
+<div class="container">
+    <h1 id="titre" class="text-center">FoodTruck, La Québecoise</h1>
+    {% if app.user %}
+        <div class="mt-3 mb-3 text-center">
+            <h2>Tu es connecté en tant que {{ app.user.username }}</h2>
+            <p><a href="{{ path('app_logout') }}">
+                    <button class="button">Se deconnecter</button>
+                </a></p>
+        </div>
+    {% endif %}
+    <div class="text-center grid d-flex flex-wrap justify-content-center">
+        <div class="admin_logo m-5">
+            <h3 class="text-decoration-underline">Gestion des Produits</h3>
+            <a href="{{ path('app_produit_index') }}"><img class="border border-dark"
+                                                           src="{{ asset('images/logos/produits.png') }}" width="250"
+                                                           alt="produits"/></a>
+        </div>
+        <div class="admin_logo m-5">
+            <h3 class="text-decoration-underline">Gestion des Localisations</h3>
+            <a href="{{ path('app_localisation_index') }}"><img class="border border-dark"
+                                                                src="{{ asset('images/logos/localisations.png') }}"
+                                                                width="250" alt="localisations"/></a>
+        </div>
+        <div class="admin_logo m-5">
+            <h3 class="text-decoration-underline">Gestion des Matières Premières</h3>
+            <a href="{{ path('app_matiere_index') }}"><img class="border border-dark"
+                                                           src="{{ asset('images/logos/matiere.png') }}" width="250"
+                                                           alt="matiere"/></a>
+        </div>
+        <div class="admin_logo m-5">
+            <h3 class="text-decoration-underline">Gestion des Mouvements Stocks</h3>
+            <a href="{{ path('app_mouvement') }}"><img class="border border-dark"
+                                                       src="{{ asset('images/logos/stock.png') }}" width="250"
+                                                       alt="mouvements"/></a>
+
+        </div>
+        <div class="m-3 w-100">
+            <a href="{{ path('app_index') }}">
+                <button class="button">Vers le site</button>
+            </a>
         </div>
     </div>
-{% endblock %}
+    {% endblock %}

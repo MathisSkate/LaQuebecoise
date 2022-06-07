@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\DetailPerte;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -15,7 +16,14 @@ class DetailPerteType extends AbstractType
             ->add('perte', null, ['label' => false, 'attr' => ['placeholder' => 'Achat']])
             ->add('matiere', null, ['label' => false, 'placeholder' => 'Matière'])
             ->add('quantite', null, ['label' => false, 'attr' => ['placeholder' => 'Quantité']])
-        ;
+            ->add('description', ChoiceType::class, [
+                'label' => false,
+                'choices' => [
+                    'Defaut' => 'Defaut de produit',
+                    'Périmé' => 'Périmé',
+                    'Offert' => 'Offert'
+                ],
+                'attr' => ['placeholder' => 'Description']]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

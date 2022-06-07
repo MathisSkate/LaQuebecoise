@@ -5,10 +5,10 @@
         <h1 class="text-center text-decoration-underline">Vos avis</h1>
         <div class="avis grid center text-center d-flex flex-wrap justify-content-center">
             {% for avi in avis %}
-                <div class="avi border border-dark border-1 p-2 m-3">
+                <div class="avi border border-dark border-1 rounded-3 m-4">
                     <h3>{{ avi.nom }} {{ avi.prenom }}</h3>
                     <h4>{{ avi.date ? avi.date|date('d/m/Y') : '' }}</h4>
-                    <h5>{{ avi.description }}</h5>
+                    <cite class="h5">{{ avi.description }}</cite>
                     {% if avi.note == 1 %}
                         <div class="star">
                             <i class="fa-solid fa-star star gold"></i>

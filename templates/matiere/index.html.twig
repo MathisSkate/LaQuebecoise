@@ -29,7 +29,9 @@
                     {% endif %}
                     {% set total = total + quantite %}
                     <td>{{ quantite }} €</td>
-                    <td><a href="{{ path('app_matiere_edit', {'id': matiere.id}) }}"><button class="button">Modifier</button></a></td>
+                    <td><a href="{{ path('app_matiere_edit', {'id': matiere.id}) }}">
+                            <button class="button">Modifier</button>
+                        </a></td>
                     <td>{{ include('matiere/_delete_form.html.twig') }}</td>
                 </tr>
             {% else %}
@@ -46,6 +48,11 @@
             </tr>
             </tbody>
         </table>
-        <a href="{{ path('app_matiere_new') }}"><button class="button">Créer une nouvelle Matière Première</button></a>
+        <a href="{{ path('app_matiere_new') }}">
+            <button class="button">Créer une nouvelle Matière Première</button>
+        </a>
+        <a href="{{ path('app_admin') }}">
+            <button class="button">Vers l'Administration</button>
+        </a>
     </div>
 {% endblock %}

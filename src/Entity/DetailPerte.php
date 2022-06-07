@@ -22,6 +22,9 @@ class DetailPerte
     #[ORM\Column(type: 'float')]
     private $quantite;
 
+    #[ORM\Column(type: 'string', length: 255)]
+    private $description;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -59,6 +62,18 @@ class DetailPerte
     public function setQuantite(float $quantite): self
     {
         $this->quantite = $quantite;
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(string $description): self
+    {
+        $this->description = $description;
 
         return $this;
     }

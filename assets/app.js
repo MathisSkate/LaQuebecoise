@@ -15,20 +15,3 @@ import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.bundle.js";
 
 import $ from 'jquery';
-
-/*----------*/
-/*   Menu   */
-/*----------*/
-
-import CircleType from 'circletype';
-
-//circle();
-
-function circle() {
-    const frites = new CircleType(document.getElementById('frites'));
-    frites.radius(220);
-
-    const voyage = new CircleType(document.getElementById('voyage'));
-    voyage.radius(180);
-    voyage.dir(-1);
-}

@@ -47,6 +47,17 @@ class DetailVenteRepository extends ServiceEntityRepository
         }
     }
 
+    public function findByDate($date) {
+        return $this->createQueryBuilder('d')
+            ->innerJoin('d.vente', 'v')
+            ->andWhere('v.date = :date')
+            ->setParameter('date', $date)
+            ->orderBy('d.id', 'ASC')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
     // /**
     //  * @return DetailVente[] Returns an array of DetailVente objects
     //  */

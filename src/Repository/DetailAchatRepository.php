@@ -47,6 +47,17 @@ class DetailAchatRepository extends ServiceEntityRepository
         }
     }
 
+    public function findByDate($date)
+    {
+        return $this->createQueryBuilder('d')
+            ->innerJoin('d.achat', 'a')
+            ->andWhere('a.date = :date')
+            ->setParameter('date', $date)
+            ->orderBy('d.id', 'ASC')
+            ->getQuery()
+            ->getResult();
+    }
+
     // /**
     //  * @return DetailAchat[] Returns an array of DetailAchat objects
     //  */

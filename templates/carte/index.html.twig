@@ -6,26 +6,9 @@
         <br/>
         <div class="carte">
             <div class="container">
-                <div class="plats container">
-                    <h2 id="plats" class="titre">Les poutines</h2>
-                    <br/>
-                    {% for plat in plats %}
-                        <div class="produit">
-                            <h3 class="nom">{{ plat.nom }} {{ plat.prix }} €</h3>
-                        </div>
-                        <br/>
-                    {% endfor %}
-                </div>
-                <div class="viande">
-                    <h4>*Les viandes aux choix :</h4>
-                    <br/>
-                    <h5 class="description">bacon, saucisses, hache de boeuf frais, effiloché de canard</h5>
-                </div>
-            </div>
-            <div class="container">
                 <div class="frites container">
                     <br/>
-                    <h2 id="frites" class="titre">Les frites portions</h2>
+                    <h2 id="frites" class="titre">Nos frites portions</h2>
                     <br/>
                     {% for frite in frites %}
                         <div class="produit">
@@ -34,10 +17,8 @@
                         <br/>
                     {% endfor %}
                 </div>
-            </div>
-            <div class="container">
                 <div class="autres container">
-                    <h2 id="autres" class="titre">Les </h2>
+                    <h2 id="autres" class="titre">Nos plats </h2>
                     <br/>
                     {% for autre in autres %}
                         <div class="produit">
@@ -45,9 +26,29 @@
                         </div>
                     {% endfor %}
                 </div>
+            </div>
+            <div class="container">
+                <div class="plats container">
+                    <br/>
+                    <h2 id="plats" class="titre">Nos poutines</h2>
+                    <br/>
+                    {% for plat in plats %}
+                        <div class="produit">
+                            <h3 class="nom">{{ plat.nom }} {{ plat.prix }} €</h3>
+                        </div>
+                        <br/>
+                    {% endfor %}
+                    <div class="viande">
+                        <h4>*Les viandes aux choix :</h4>
+                        <br/>
+                        <h5 class="description">bacon, saucisses, hache de boeuf frais, effiloché de canard</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
                 <br/>
                 <div class="desserts container">
-                    <h2 id="desserts" class="titre">Dessert</h2>
+                    <h2 id="desserts" class="titre">Nos desserts</h2>
                     <br/>
                     {% for dessert in desserts %}
                         <div class="produit">
@@ -57,20 +58,21 @@
                 </div>
                 <br/>
                 <div class="boissons container">
-                    <h2 id="boissons" class="titre">Les breuvages</h2>
+                    <h2 id="boissons" class="titre">Nos breuvages</h2>
                     <br/>
                     {% for boisson in boissons %}
                         <div class="produit">
                             <h3 class="nom">{{ boisson.nom }}  {{ boisson.prix }} €</h3>
                         </div>
                     {% endfor %}
+                    <h4 class="h5 text-decoration-underline">* l'abus d'alcool est dangereux pour la santé, à consommer
+                        avec modération</h4>
                 </div>
             </div>
         </div>
         <!--<h3 id="voyage">Bon voyage !</h3>-->
         <div class="pied">
             <img class="logo w-25" src="{{ asset('images/logos/icon.jpg') }}" alt="logo"/>
-            <!--<img class="imgfrite w-25" src="{{ asset('images/poutine.png') }}" alt="frite"/>-->
             <div class="coordonnes">
                 <p>
                     Nous contacter : <br/>
@@ -78,7 +80,6 @@
                     0783320224
                 </p>
             </div>
-            <h4 class="alcool text-decoration-underline">* l'abus d'alcool est dangereux pour la santé, à consommer avec modération</h4>
         </div>
     </div>
 {% endblock %}

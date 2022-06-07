@@ -4,9 +4,9 @@
     <div class="container text-center justify-content-center border border-dark">
         {% for detail in perte.detailPertes %}
             {% if detail.matiere.isUnite %}
-                <h2>{{ detail.matiere }} : {{ detail.quantite }}</h2>
+                <h2>{{ detail.matiere }} : {{ detail.quantite }} : {{ detail.description }}</h2>
             {% else %}
-                <h2>{{ detail.matiere }} : {{ detail.quantite }} g</h2>
+                <h2>{{ detail.matiere }} : {{ detail.quantite }} g : {{ detail.description }}</h2>
             {% endif %}
         {% endfor %}
     </div>

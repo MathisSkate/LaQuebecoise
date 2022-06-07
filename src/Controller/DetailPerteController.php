@@ -14,11 +14,12 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/detail/perte')]
 class DetailPerteController extends AbstractController
 {
-    #[Route('/', name: 'app_detail_perte_index', methods: ['GET'])]
-    public function index(DetailPerteRepository $detailPerteRepository): Response
+    #[Route('/{date}/index', name: 'app_detail_perte_index', methods: ['GET'])]
+    public function index(DetailPerteRepository $detailPerteRepository, $date): Response
     {
         return $this->render('detail_perte/index.html.twig', [
-            'detail_pertes' => $detailPerteRepository->findAll(),
+            'detail_pertes' => $detailPerteRepository->findByDate($date),
+            'date' => $date,
         ]);
     }
 
@@ -34,7 +35,7 @@ class DetailPerteController extends AbstractController
             $detailPerte -> getMatiere() -> setStock($detailPerte -> getMatiere() -> getStock() - $detailPerte -> getQuantite());
             $detailPerteRepository->add($detailPerte);
             $this -> addFlash('success', "Produit ajouté à la perte");
-            return $this->redirectToRoute('app_detail_perte_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_detail_perte_index', ["date" => date_format($detailPerte->getPerte()->getDate(),"Y-m-d")], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('detail_perte/new.html.twig', [
@@ -55,7 +56,7 @@ class DetailPerteController extends AbstractController
             $detailPerte -> getMatiere() -> setStock($detailPerte -> getMatiere() -> getStock() - $detailPerte -> getQuantite());
             $detailPerteRepository->add($detailPerte);
             $this -> addFlash('success', "Perte modifié");
-            return $this->redirectToRoute('app_detail_perte_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_detail_perte_index', ["date" => date_format($detailPerte->getPerte()->getDate(),"Y-m-d")], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('detail_perte/edit.html.twig', [
@@ -73,6 +74,6 @@ class DetailPerteController extends AbstractController
             $this -> addFlash('success', "Produit supprimé de la perte");
         }
 
-        return $this->redirectToRoute('app_detail_perte_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('app_detail_perte_index', ["date" => date_format($detailPerte->getPerte()->getDate(),"Y-m-d")], Response::HTTP_SEE_OTHER);
     }
 }

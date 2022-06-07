@@ -47,6 +47,17 @@ class DetailPerteRepository extends ServiceEntityRepository
         }
     }
 
+    public function findByDate($date) {
+        return $this->createQueryBuilder('d')
+            ->innerJoin('d.perte', 'p')
+            ->andWhere('p.date = :date')
+            ->setParameter('date', $date)
+            ->orderBy('d.id', 'ASC')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
     // /**
     //  * @return DetailPerte[] Returns an array of DetailPerte objects
     //  */

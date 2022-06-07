@@ -14,11 +14,12 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/detail/vente')]
 class DetailVenteController extends AbstractController
 {
-    #[Route('/', name: 'app_detail_vente_index', methods: ['GET'])]
-    public function index(DetailVenteRepository $detailVenteRepository): Response
+    #[Route('/{date}/index', name: 'app_detail_vente_index', methods: ['GET'])]
+    public function index(DetailVenteRepository $detailVenteRepository, $date): Response
     {
         return $this->render('detail_vente/index.html.twig', [
-            'detail_ventes' => $detailVenteRepository->findAll(),
+            'detail_ventes' => $detailVenteRepository->findByDate($date),
+            'date' => $date,
         ]);
     }
 
@@ -33,7 +34,7 @@ class DetailVenteController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $detailVenteRepository->add($detailVente);
             $this -> addFlash('success', "Produit ajouté à la vente");
-            return $this->redirectToRoute('app_detail_vente_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_detail_vente_index', ["date" => date_format($detailVente->getVente()->getDate(),"Y-m-d")], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('detail_vente/new.html.twig', [
@@ -59,7 +60,7 @@ class DetailVenteController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $detailVenteRepository->add($detailVente);
             $this -> addFlash('success', "Vente modifié");
-            return $this->redirectToRoute('app_detail_vente_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_detail_vente_index', ["date" => date_format($detailVente->getVente()->getDate(),"Y-m-d")], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('detail_vente/edit.html.twig', [
@@ -76,6 +77,6 @@ class DetailVenteController extends AbstractController
             $this -> addFlash('success', "Produit supprimé de la vente");
         }
 
-        return $this->redirectToRoute('app_detail_vente_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('app_detail_vente_index', ["date" => date_format($detailVente->getVente()->getDate(),"Y-m-d")], Response::HTTP_SEE_OTHER);
     }
 }

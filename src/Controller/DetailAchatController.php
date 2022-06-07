@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\Entity\Achat;
 use App\Entity\DetailAchat;
 use App\Form\DetailAchatType;
 use App\Repository\AchatRepository;
@@ -15,14 +14,14 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/detail/achat')]
 class DetailAchatController extends AbstractController
 {
-    #[Route('/', name: 'app_detail_achat_index', methods: ['GET'])]
-    public function index(DetailAchatRepository $detailAchatRepository): Response
+    #[Route('/{date}/index', name: 'app_detail_achat_index', methods: ['GET'])]
+    public function index(DetailAchatRepository $detailAchatRepository, $date): Response
     {
         return $this->render('detail_achat/index.html.twig', [
-            'detail_achats' => $detailAchatRepository->findAll(),
+            'detail_achats' => $detailAchatRepository->findByDate($date),
+            'date' => $date,
         ]);
     }
-
     #[Route('/new', name: 'app_detail_achat_new', methods: ['GET', 'POST'])]
     public function new(Request $request, DetailAchatRepository $detailAchatRepository, AchatRepository $achatRepository): Response
     {
@@ -35,7 +34,7 @@ class DetailAchatController extends AbstractController
             $detailAchat -> getMatiere() -> setStock($detailAchat -> getMatiere() -> getStock() + $detailAchat -> getQuantite());
             $detailAchatRepository->add($detailAchat);
             $this -> addFlash('success', "Produit ajouté à l'achat");
-            return $this->redirectToRoute('app_detail_achat_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_detail_achat_index', ["date" => date_format($detailAchat->getAchat()->getDate(),"Y-m-d")], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('detail_achat/new.html.twig', [
@@ -55,7 +54,7 @@ class DetailAchatController extends AbstractController
             $detailAchat -> getMatiere() -> setStock($detailAchat -> getMatiere() -> getStock() + $detailAchat -> getQuantite());
             $detailAchatRepository->add($detailAchat);
             $this -> addFlash('success', "Achat modifié");
-            return $this->redirectToRoute('app_detail_achat_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_detail_achat_index', ["date" => date_format($detailAchat->getAchat()->getDate(),"Y-m-d")], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('detail_achat/edit.html.twig', [
@@ -73,6 +72,6 @@ class DetailAchatController extends AbstractController
             $this -> addFlash('success', "Produit supprimé de l'achat");
         }
 
-        return $this->redirectToRoute('app_detail_achat_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('app_detail_achat_index', ["date" => date_format($detailAchat->getAchat()->getDate(),"Y-m-d")], Response::HTTP_SEE_OTHER);
     }
 }
